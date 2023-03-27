@@ -4,34 +4,36 @@ import java.util.*;
 
 public class Task {
     public static void main(String[] args) {
-        System.out.println("Необходимо создать ArrayList из целых чисел. Затем следует перебрать коллекцию, " +
-                "если число чётное, добавить его в список с чётными числами, если нечетное - " +
-                "в список с нечётными числами соответственно. Вывести оба списка на экран, " +
-                "использовать метод для нахождения числа элементов в списке и сравнить, " +
-                "какой список больше.");
+        System.out.println("Создайте класс Animal, где поле name, - название животного." +
+                " Добавьте 10 животных в LinkedList," +
+                " удалите те объекты, name которых начинается с гласной буквы.");
 
-        List<Integer> integerList = new ArrayList<>();
-        List<Integer> positive = new ArrayList<>();
-        List<Integer> negative = new ArrayList<>();
-        for (int i = 1; i < 21; i++) {
-            integerList.add((int) (Math.random()*20)+1);
-        }
+        LinkedList<String> ll = new LinkedList();
+        Animal cat = new Animal("Cat");
+        Animal parrot = new Animal("Parrot");
+        Animal elephant = new Animal("Elephant");
+        Animal owl = new Animal("Owl");
+        Animal beetle = new Animal("Beetle");
+        Animal turtle = new Animal("Turtle");
+        Animal dog = new Animal("Dog");
+        Animal peg = new Animal("Peg");
+        Animal camel = new Animal("Camel");
+
+        ll.add(cat.getName());
+        ll.add(parrot.getName());
+        ll.add(elephant.getName());
+        ll.add(owl.getName());
+        ll.add(beetle.getName());
+        ll.add(turtle.getName());
+        ll.add(dog.getName());
+        ll.add(peg.getName());
+        ll.add(camel.getName());
         System.out.println();
 
-        System.out.println("Начальный список: " + integerList);
-        Collections.sort(integerList);
-        System.out.println("Сортировка завершена " + integerList);
-        for (int n :
-             integerList) {
-            if (n %2 == 0) {
-                positive.add(n);
-            } else
-                negative.add(n);
-        }
-        System.out.println("Список четных чисел: " + positive);
-        System.out.println("Список нечетных чисел: " + negative);
+        System.out.println("Список без изменения " + ll);
+        ll.removeIf(a -> a.substring(0, 1).matches("(?i)[AEIOU]"));
+        System.out.println("Список после изменения " + ll);
 
-        String answer = (positive.size()>negative.size()) ? "Четных чисел больше " : "Нечетных чисел больше";
-        System.out.println(answer);
+
     }
 }
